@@ -1,0 +1,527 @@
+/* =========== Google Fonts ============ */
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap");
+
+/* =============== Globals ============== */
+* {
+    font-family: "Ubuntu", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #74512D;
+    --white: #FFF3EC;
+    --gray: #f5f5f5;
+    --black1: #222;
+    --black2: #999;
+}
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100%;
+}
+
+/* =============== Navigation ================ */
+.navigation {
+    position: fixed;
+    width: 300px;
+    height: 100%;
+    background: var(--blue);
+    border-left: 10px solid var(--blue);
+    transition: 0.5s;
+    overflow: hidden;
+}
+
+.navigation.active {
+    width: 80px;
+}
+
+.navigation ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding-bottom: 20px;
+    /* Add padding at the bottom of the sidebar */
+}
+
+.navigation ul li {
+    position: relative;
+    width: 100%;
+    list-style: none;
+    border-top-left-radius: 30px;
+    border-bottom-left-radius: 30px;
+}
+
+.navigation ul li:hover,
+.navigation ul li.hovered {
+    background-color: var(--white);
+}
+
+.navigation ul li:nth-child(1) {
+    margin-bottom: 40px;
+    pointer-events: none;
+}
+
+.navigation ul li a {
+    position: relative;
+    display: flex;
+    width: 100%;
+    text-decoration: none;
+    color: var(--white);
+}
+
+.navigation ul li:hover a,
+.navigation ul li.hovered a {
+    color: var(--blue);
+}
+
+.navigation ul li a .icon {
+    min-width: 60px;
+    height: 60px;
+    line-height: 75px;
+    text-align: center;
+}
+
+.navigation ul .settings {
+    margin-top: auto;
+    /* Push the settings item to the bottom */
+}
+
+.navigation ul li a .icon img {
+    width: 50%;
+    height: auto;
+    filter: brightness(0) invert(1);
+    /* Default white */
+    transition: filter 0.3s ease;
+}
+
+.navigation ul li:hover a .icon img,
+.navigation ul li.hovered a .icon img {
+    filter: brightness(0) invert(0.3);
+    /* Change color on hover */
+}
+
+.navigation ul li a .title {
+    padding: 0 10px;
+    height: 60px;
+    line-height: 60px;
+    white-space: nowrap;
+}
+
+/* --------- curve outside ---------- */
+.navigation ul li:hover a::before,
+.navigation ul li.hovered a::before {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px 35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+.navigation ul li:hover a::after,
+.navigation ul li.hovered a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 35px -35px 0 10px var(--white);
+    pointer-events: none;
+}
+
+/* ===================== Main ===================== */
+.main {
+    position: absolute;
+    width: calc(100% - 300px);
+    left: 300px;
+    min-height: 100vh;
+    background: var(--white);
+    transition: 0.5s;
+}
+
+.main.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}
+
+.topbar {
+    width: 100%;
+    height: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0 10px;
+    gap: 10px; /* Adding gap to space out elements */
+}
+
+.toggle {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+}
+/* =====================================Members.php==================================================*/
+.topbar h2 {
+    color: var(--blue); 
+    margin: 0; 
+}
+/* Add styles for the search members.php*/
+.topbar .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Allow the search container to grow and take available space */
+}
+
+.topbar .search-container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+.input-wrapper input {
+    padding: 8px 40px 8px 8px; /* Add padding to make space for the icon */
+    width: 100%;
+    font-size: 17px;
+    border: none;
+    border-radius:10px;
+    background: #fff;
+    box-shadow:3px -3px 5px #fff,-3px 3px 5px #bebebe;
+}
+
+.input-wrapper button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: none;
+    border: none;
+    padding: 0 10px;
+    cursor: pointer;
+    margin-right:15px;
+}
+
+.input-wrapper button i {
+    font-size: 20px;
+    color: #999;
+}
+
+.input-wrapper button:hover i {
+    color: #333;
+}
+/* Add styles for the all category members.php*/
+.dropdown {
+    float: right;
+    overflow: hidden;
+    border-radius:10px;
+    width:140px;
+    background: #fff;
+    box-shadow:3px -3px 5px #fff,-3px 3px 5px #bebebe;
+    margin-right:40px;
+}
+.dropdown .dropbtn {
+    font-size: 16px;  
+    outline: none;
+    color: black;
+    border:none;
+    border-radius:10px;
+    background-color: inherit;
+    font-family: inherit;
+    margin-left:10px;
+}
+.topbar, .dropdown:hover .dropbtn {
+    margin-left:10px;
+    color:#ddd;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 140px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius:5px;
+}
+.dropdown-content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    border-radius:10px;
+}
+
+.dropdown-content a:hover {
+    background-color: #ddd;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+/* Add styles for the button tambah members.php */
+.tambahbtn {
+    float: left;
+    overflow: hidden;
+    border-radius: 5px;
+    width: 140px;
+    height: 40px;
+    background: #fff;
+    box-shadow: 3px -3px 5px #fff, -3px 3px 5px #bebebe;
+    margin-left: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    outline: none;
+    color: var(--blue);
+    border: none;
+    cursor: pointer;
+}
+
+.tambahbtn a:hover {
+    color: #ddd;
+}
+
+.tambahbtn a {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    color: var(--blue);
+    font-family: "Ubuntu", sans-serif;
+}
+
+.tambahbtn a i {
+    margin-right: 5px;
+    font-size: 20px;
+}
+.card-container {
+    background: white;
+    border-radius: 10px;
+    margin-top: 50px;
+    margin-left: 30px;
+    box-shadow: 3px -3px 5px #fff, -3px 3px 5px #bebebe;
+    transition: 0.3s ease;
+    width: 95%;
+    height: 80vh; /* Set a fixed height */
+    padding: 10px;
+    overflow-y: auto; /* Enable vertical scrolling */
+}
+
+.card-content {
+    padding: 15px;
+}
+
+/* Add styles for the data table members.php */
+.member-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.member-table th,
+.member-table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.member-table th {
+    background-color: var(--blue);
+    color: #fff;
+    border-radius:10px 10px 0 0;
+    text-align: center;
+}
+
+.member-table td {
+    background-color: var(--light-gray);
+    color: var(--black);
+    text-align: center;
+}
+
+.member-table tr:hover {
+    background-color: #f5f5f5;
+}
+
+.member-table td a {
+    color: var(--blue);
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.member-table td a:hover {
+    color: var(--dark-blue);
+}
+
+.member-table td a .fa {
+    font-size: 25px;
+}
+
+/* Add styles for the icons */
+.fa-pencil-square {
+    color: var(--red);
+    border-radius: 50px;
+}
+
+.fa-trash {
+    color: var(--red);
+    border-radius: 50px;
+}
+
+/* Add styles for the editMember.php*/
+.edit-form {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 3px -3px 5px #fff, -3px 3px 5px #bebebe;
+    width: 50%;
+    margin: 50px auto;
+}
+
+.edit-form h2 {
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.edit-form label {
+    color: var(--black2);
+}
+
+.edit-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-form button {
+    background: var(--blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-form button:hover {
+    background: var(--black2);
+}
+.edit-form a{
+    background: var(--blue);
+    color: white;
+    padding: 8.5px 20px 9px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration:none;
+    float:right;
+    margin-right:40px;
+
+}
+/* Add styles for the addMember.php*/
+.add-form {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 3px -3px 5px #fff, -3px 3px 5px #bebebe;
+    width: 50%;
+    margin: 50px auto;
+}
+
+.add-form h2 {
+    color: var(--blue);
+    margin-bottom: 20px;
+}
+
+.add-form label {
+    color: var(--black2);
+}
+
+.add-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.add-form button {
+    background: var(--blue);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-form button:hover {
+    background: var(--black2);
+}
+.add-form a{
+    background: var(--blue);
+    color: white;
+    padding: 8.5px 20px 9px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration:none;
+    float:right;
+    margin-right:40px;
+}
+.add-form a:hover {
+    background: var(--black2);
+}
+/* =====================================Members.php==================================================*/
+
+
+/* ====================== Responsive Design ========================== */
+@media (max-width: 991px) {
+    .navigation {
+        left: -300px;
+    }
+
+    .navigation.active {
+        width: 300px;
+        left: 0;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation {
+        width: 100%;
+        left: -100%;
+        z-index: 1000;
+    }
+
+    .navigation.active {
+        width: 100%;
+        left: 0;
+    }
+}

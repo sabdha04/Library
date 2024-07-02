@@ -1,0 +1,52 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.half {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+.left {
+    left: 0;
+    background-color: #F1F8E8;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.left img{
+    max-width:80%;
+    height:auto;
+}
+
+.right {
+    right: 0;
+    background-color: #439786;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center
+}
+
+.right h1,.right p, .right a{
+    text-align:center;
+    color:white;
+    margin: 7px 0;
+}
+.right a {
+    padding: 10px 25px;
+    background-color: rgba(255, 255, 255, 0.4);
+    color: white;
+    text-decoration: none;
+    border-radius: 40px;
+    transition: background-color 0.3s;
+}
+.right a:hover {
+    background-color: #f0f0f0; /* Change color on hover */
+}
+
+
